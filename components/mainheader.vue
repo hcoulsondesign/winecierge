@@ -3,7 +3,7 @@
   <div class="mainheader">
     <div class="bg-dark">
       <div class="w-50 mx-auto pt-5 pb-4">
-        <img alt="Winecierge logo" src="../assets/winecierge-logo-white.svg">
+        <img alt="Winecierge logo" src="../assets/winecierge-logo-white.svg" class="img-fluid">
         <h5 class="text-white">
           <slot name='tagline'>Welcome to Winecierge</slot>
         </h5>

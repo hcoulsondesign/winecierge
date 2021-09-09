@@ -2,7 +2,7 @@
   <div class="mainfooter">
     <div class="bg-dark py-5">
       <div class="w-25 mx-auto">
-        <img alt="Winecierge logo" src="../assets/winecierge-logo-white.svg">
+        <img alt="Winecierge logo" src="../assets/winecierge-logo-white.svg" class="img-fluid">
         <a href="#Top" class="text-white">Back to Top</a>
       </div>
     </div>
