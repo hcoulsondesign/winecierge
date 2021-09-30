@@ -9,14 +9,25 @@
 
         <div class="col-sm-12 col-md-10 col-xl-6 mx-auto bg-info">
           <h3 class="text-white pt-4 m-0">The Latest in WA Wine News</h3>
-          <section class="container mb-3" v-if="articles">
-              <articleCard
-                v-for="article of articles"
-                :key="article.id"
-                :article="article"
-              />
-          </section>
+          <!-- CODE THAT CALLED THE ARTICLE CARD COMPONENT TO RENDER API DATA -->
+          <!-- <section class="container mb-3" v-if="articles">
+                <articleCard
+                  v-for="article of articles"
+                  :key="article.id"
+                  :article="article"
+                />
+              </section>-->
+          <!-- THIS IS THE NEW HARD-CODED SECTION TO WORK AROUND THE API PERMISSIONS ISSUE -->
+          <div v-for="article in articles" :key="key">
+            <article class="card p-3 m-3">
+              <img :src="article.urlToImage" :alt="article.title" class="card__img img-fluid mb-4">
+              <h5 class="card__title">{{ article.title }}</h5>
+              <p class="card__author">{{ article.author }}</p>
+              <p class="card__descriptor text-left">{{ article.description }} <a href="article.url">Read more at <span class="font-italic">{{ article.sourceName }}</span></a></p>
+            </article>
+          </div>
         </div>
+
 
         <div class="accordion col-sm-12 col-md-10 col-xl-6 mx-auto" role="tablist">
           <!-- for every story in the object, toggle between showing content and hiding it each time user clicks -->
@@ -45,15 +56,43 @@ import articleCard from '@/components/articleCard.vue';
 
   export default {
   name: 'about',
-  components: {
-    articleCard
-  },
+  //THIS COMPONENT STYLED THE API DATA
+  // components: {
+  //   articleCard
+  // },
   data () {
     return {
       pageTitle: 'Industry News',
-      loading: true,
-      articles: null,
-      errored: false,
+      // loading: true,
+      // articles: null,
+      // errored: false,
+      //THIS IS THE HARD-CODED DATA I COPIED FROM THE OBJECT RETURNED BY THE API
+      articles: [
+        {
+          urlToImage: "https://ca-times.brightspotcdn.com/dims4/default/39dac7a/2147483647/strip/true/crop/6000x3150+0+425/resize/1200x630!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Fc3%2Fb9%2F646746f44f15b1834462ea826a93%2Fla-photos-1staff-621844-me-wineries-forego-2020-vintage-kkn-23203.JPG",
+          title: "Disaster aid bill would compensate farmers for grape crops damaged by wildfires",
+          author: "Sarah D. Wire",
+          description: "Smoke-damaged grapes are cited as a crop potentially covered under a disaster aid in a bill that Congress is considering.",
+          sourceName: "Los Angeles Times",
+          url: "https://www.latimes.com/politics/story/2021-09-21/disaster-aid-bill-would-compensate-farmers-for-grape-crops-damaged-by-wildfires"
+        },
+        {
+          urlToImage: "https://mma.prnewswire.com/media/1626889/Rivalry_Lives_On_Image.jpg?p=facebook",
+          title: "The Rivalry Lives On: Canoe Ridge Vineyard And Waterbrook Winery Team Up With Cougar And Husky Athletics",
+          author: null,
+          description: "WALLA WALLA, Wash., Sept. 15, 2021 /PRNewswire/ -- While team pride runs strong, so does a statewide affinity for Washington wine. Canoe Ridge Vineyard and Waterbrook Winery have announced respective partnerships of University of Washington's Husky Athletics …",
+          sourceName: "PRNewswire",
+          url: "https://www.prnewswire.com/news-releases/the-rivalry-lives-on-canoe-ridge-vineyard-and-waterbrook-winery-team-up-with-cougar-and-husky-athletics-301377960.html"
+        },
+        {
+          urlToImage: "https://thumbor.forbes.com/thumbor/fit-in/1200x0/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F6134cbbc30a411e506ecd59e%2F0x0.jpg",
+          title: "Washington State Wineries To Follow On Instagram During Harvest",
+          author: "Leslie Kelly, Contributor",
+          description: "Harvest season is a wonderful time to visit wine country. Here are some fun wineries to follow right now, including Brandi Carlile's inspiring label.",
+          sourceName: "Forbes",
+          url: "https://www.forbes.com/sites/lesliekelly/2021/09/07/washington-state-wineries-to-follow-on-instagram-during-harvest/"
+        }
+      ],
       stories: [
         {
           title: 'Wild Fires Across the West Raise Concerns Over Smoke Taint for a Fifth Consecutive Season - 27 August 2021',
@@ -78,17 +117,18 @@ import articleCard from '@/components/articleCard.vue';
       ]
     }
   },
-  mounted () {
-    console.log('mounted is running')
-    axios
-    .get('https://newsapi.org/v2//everything?q=%22washington%20wine%22&sortBy=publishedAt&apiKey=eb66c22fa9ec418094bb0e52e9009a6a')
-    .then(response => {this.articles = response.data.articles
-      console.log(response)} )
-    .catch(error => {
-      console.log(error)
-      this.errored = true
-    })
-    .finally(() => this.loading = false)
-  }
+  //THIS IS THE FUNCTION THAT PULLS DATA FROM THE API, BUT ONLY WORKS ON LOCALHOST:3000
+  // mounted () {
+  //   console.log('mounted is running')
+  //   axios
+  //   .get('https://newsapi.org/v2//everything?q=%22washington%20wine%22&sortBy=publishedAt&apiKey=eb66c22fa9ec418094bb0e52e9009a6a')
+  //   .then(response => {this.articles = response.data.articles
+  //     console.log(response)} )
+  //   .catch(error => {
+  //     console.log(error)
+  //     this.errored = true
+  //   })
+  //   .finally(() => this.loading = false)
+  // }
 }
 </script>
