@@ -38,6 +38,7 @@ etc ensures that search engines won't downgrade a site's value because of sloppy
 2) Identify clear goals of SEO and evaluate them against the current state of SEO.
 3) Perform keyword research on related sites and topics, and identify keywords that help
 crawlers accurately and concisely identify a page's content.
-4) Implement the improvements identified in steps 2 and 3.
+4) Implement the improvements identified in steps 2 and 3, e.g. update page descriptions and
+embed keywords in the metadata for each page.
 5) Build awareness through social media tags and links
 6) Evaluate the effect the changes have had repeat to process to continue optimization.
