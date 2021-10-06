@@ -130,5 +130,17 @@ import articleCard from '@/components/articleCard.vue';
   //   })
   //   .finally(() => this.loading = false)
   // }
+  head() {
+    return {
+      title: this.pageTitle,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'The latest in industry happenings that affect the grape growing season, vintage availability, and the marketplace'
+        }
+      ]
+    }
+  }
 }
 </script>

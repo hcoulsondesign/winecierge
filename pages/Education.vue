@@ -80,6 +80,18 @@
         counter: 0
       }
     },
+    head() {
+      return {
+        title: this.pageTitle,
+        meta: [
+          {
+            hid: 'description',
+            name: 'description',
+            content: 'Brief lessons about wine regions, the science of winemaking, and sensory appreciation of wine.'
+          }
+        ]
+      }
+    },
     methods:{
       showdef: function(word){
         alert(word) //alert the user of a word's definition when they click on it

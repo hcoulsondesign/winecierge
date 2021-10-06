@@ -78,6 +78,18 @@ export default {
         }
       ]
     }
-  }
+  },
+  head() {
+    return {
+      title: this.pageTitle,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'A bit about the creator of Winecierge and a gallery of photographs'
+        }
+      ]
+    }
+  },
 }
 </script>

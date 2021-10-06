@@ -52,6 +52,18 @@ export default {
       }
       ]
     }
+  },
+  head() {
+    return {
+      title: this.pageTitle,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Serving as a concierge of wine experiences for the burgeoning wine enthusiasts.'
+        }
+      ]
+    }
   }
 }
 </script>
